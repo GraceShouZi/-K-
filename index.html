@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>index</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link type="text/css" href="css/basic.css" rel="stylesheet">
+<script type="text/javascript" src="js/resize.js"></script>
+<script type="text/javascript" src="js/jquery-2.2.1.min.js"></script>
+<script type="text/javascript" src="js/minChart.js"></script>
+</head>
+<script type="text/javascript"> 
+    var MinWidth = ($(window).width() > 768) ? 768 : $(window).width();
+    var MinHeight = 400;
+    var MPIXEL_RATIO = (function () {
+        var Mctx = document.createElement("canvas").getContext("2d"),
+            Mdpr = window.devicePixelRatio || 1,
+            Mbsr = Mctx.webkitBackingStorePixelRatio ||
+                  Mctx.mozBackingStorePixelRatio ||
+                  Mctx.msBackingStorePixelRatio ||
+                  Mctx.oBackingStorePixelRatio ||
+                  Mctx.backingStorePixelRatio || 1;
+    
+        return Mdpr/Mbsr;
+    })();
+    McreateHiDPICanvas = function(w, h, ratio) {
+        if (!ratio) { ratio = MPIXEL_RATIO; }
+        var can = document.createElement("canvas");
+        can.id = 'Mcanvas';
+        can.width = w * ratio;
+        can.height = h * ratio;
+        can.style.width = w + "px";
+        can.style.height = h + "px";
+        can.getContext("2d").setTransform(ratio, 0, 0, ratio, 0, 0);
+        return can;
+    };
+</script>
+<body>
+        <div id="canvas" class="canvas">
+            <script type="text/javascript">
+                var myCanvas = McreateHiDPICanvas(MinWidth, MinHeight);
+                document.getElementById('canvas').appendChild(myCanvas);
+                  $(".canvas").css({"width":MinWidth,"margin":"100px auto"})
+            </script>
+        </div> 
+</body>
+<script type="text/javascript">
+    var Mcanvas = document.getElementById('Mcanvas');
+    var context = Mcanvas.getContext('2d');
+    var data = {"quote":{"time":"20161104084531","open":16.19,"preClose":16.2,"highest":16.38,"lowest":16.19,"price":16.35,"volume":258641,"amount":42141},"mins":[]}; 
+    
+    window.onload = function(){
+        drawMin(context,data,MinWidth,MinHeight);
+        var timeNum = -1;
+        var timer = setInterval(function(){
+            timeNum++;
+            if(timeNum<vvv.length){
+               data.mins.push(vvv[timeNum]);
+               drawMin(context,data,MinWidth,MinHeight);
+            }else{
+                clearInterval(timer)
+            }
+        },1000) 
+    }
+
+    
+    $(window).resize(function(){
+        MinWidth = ($(window).width() > 768) ? 768 : $(window).width();
+        MinHeight = 400;
+        $('#Mcanvas').attr('width', MinWidth * MPIXEL_RATIO);
+        $('#Mcanvas').attr('height', MinHeight * MPIXEL_RATIO);
+        $('#Mcanvas').css('width', MinWidth);
+        $('#Mcanvas').css('height', MinHeight);
+        $(".canvas").css({"width":MinWidth})
+        var context = Mcanvas.getContext('2d');;
+        context.setTransform(MPIXEL_RATIO, 0, 0, MPIXEL_RATIO, 0, 0);
+        drawMin(context,data,MinWidth,MinHeight);
+    });
+
+</script>
+</html>

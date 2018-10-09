@@ -1,0 +1,41 @@
+@charset "utf-8";
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    border:0 none;
+    margin:0;
+    padding:0;
+	list-style-type:none;
+    vertical-align:baseline;
+	background: transparent;
+}
+/*elements*/
+div,a,input,button,select,textarea{-webkit-tap-highlight-color:rgba(0, 0, 0, 0);-webkit-tap-highlight-color:transparent;}
+input,select,textarea{outline:0;font-size:14px;border:0 none;margin:0;padding:0;border-radius:0;}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section{display:block}
+a{text-decoration:none;color:#333;font-family:"Microsoft YaHei";}
+body{font-family:"Microsoft YaHei";font-size:14px;color:#333;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+table{border-collapse:collapse;border-spacing:0}
+img{border:0;vertical-align:middle;width:100%; display:block;}
+i,em{ font-style:normal;}
+.red{ color:#dd343d;}
+.wx_box{ width:100%; max-width:768px; margin:0 auto;overflow:hidden; background:#fff;}
+.MA_line{ width: 100%; overflow: hidden; line-height: 30px; font-size: 12px;}
+.MA_line li{ float: left; margin-right: 6px;}
+.MA_line li{ float:left; font-size:12px; color:gray;}
+.MA_line li i{ margin:0 7px; position:relative; top:-1px;}
+.MA_line li:first-child{ margin:0 7px 0 0; color:#FF46FB;}
+.MA_line li:nth-child(2) {color:#E39622;}
+.MA_line li:nth-child(3) {color:#09f;}
+.MA_line li:nth-child(4) {color:#35476B;}
+.canvas{ position: relative; }
+.zoomIn{ width: 30px; height: 30px; border:1px solid red; position: absolute; font-size: 24px; border-radius: 50%; text-align:center; line-height: 26px; color: red; left: 40px; 
+	top: 70%;margin-top:-30px; cursor: pointer;}
+.zoomOut{ width: 30px; height: 30px; border:1px solid red; position: absolute; font-size: 24px; border-radius: 50%; text-align:center; line-height: 26px; color: red; left: 100px; top: 70%;
+	margin-top:-30px; cursor: pointer;}
+.zoomColor{ opacity: 0.2; }
